@@ -1,0 +1,31 @@
+@import "../../../../assets/variables";
+
+.wrapper {
+  height: 40px;
+  display: flex;
+  margin: 5px 0;
+  .avatar {
+    flex-grow: 1;
+
+    text-align: center;
+
+    i {
+      line-height: 40px;
+      font-size: 2em;
+    }
+  }
+  .content {
+    flex-grow: 5;
+
+    h1 {
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: 400;
+    }
+    p {
+      margin: 0;
+      font-size: 0.7em;
+      font-weight: 100;
+    }
+  }
+}

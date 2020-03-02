@@ -1,0 +1,48 @@
+@import "../../../../assets/variables";
+
+form {
+  width: 450px;
+  margin: 5vh auto 0;
+  background: $white;
+  padding: 15px;
+  border-radius: 4px;
+  h1 {
+    text-align: center;
+    font-size: 1.4em;
+    color: $form-h1-color;
+  }
+  label {
+    width: 80%;
+    margin: 0 auto;
+    display: inherit;
+    font-size: 0.8em;
+    color: $label-color;
+  }
+  input {
+    padding: 10px;
+    border: 1px solid $form-border;
+    border-radius: 4px;
+    display: block;
+    width: 80%;
+    margin: 0 auto 20px;
+    outline-color: $form-submit;
+  }
+  input[type="submit"] {
+    background: $form-submit;
+    border: none;
+    outline: none;
+    color: $white;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+p {
+  color: white;
+  font-size: 0.8em;
+  text-align: center;
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,13 @@
+<form [formGroup]="profileForm">
+    <h1>Prihlásenie</h1>
+    <label for="login">Login</label>
+    <input id="login" autocomplete="username" type="text" formControlName="login">
+  
+    <label for="password">Heslo</label>
+    <input id="password" autocomplete="current-password" type="password" formControlName="password">
+  
+    <input type="submit" [disabled]="!profileForm.valid" (click)="validateCardinalities()" value="Prihlásiť"/>
+  
+</form>
+
+<p>Ešte nemáte účet? <a routerLink="/signup">Zaregistrujte sa</a></p>

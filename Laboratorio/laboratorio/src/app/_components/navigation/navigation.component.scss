@@ -1,0 +1,51 @@
+@import "../../../assets/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+  background: $nav-color;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0 5px;
+      color: $white;
+      display: inline-block;
+      font-size: 0.8em;
+    }
+  }
+}
+
+.main{
+  padding-left: 15px;
+  flex-grow: 2;
+  text-align: left;
+}
+.side {
+  text-align: right;
+  flex-grow: 1;
+  padding-right: 15px;
+}
+h1 {
+  font-family: 'Pacifico', cursive;
+  margin: 0;
+  color: white;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+}
+
+li {
+  &:hover {
+    cursor: pointer;
+    transition: all 0.1s linear;
+    transform: scale(1.1);
+  }
+}

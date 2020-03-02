@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <h1 *ngIf="!userSvc.getLoginStatus()">Laboratorio</h1>
+  
+    <div class="main" *ngIf="userSvc.getLoginStatus()">
+      <ul>
+        <li>O projekte</li>
+        <li>Nieco</li>
+        <li>Ine</li>
+      </ul>
+    </div>
+    <div class="side" *ngIf="userSvc.getLoginStatus()">
+      <ul>
+        <li>Profil</li>
+        <li (click)="logoutUser()">Odhlasit</li>
+      </ul>
+    </div>
+  
+  </div>
+  
