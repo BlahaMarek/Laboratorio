@@ -6,17 +6,6 @@ form {
   background: $white;
   padding: 15px;
   border-radius: 4px;
-  p {
-    margin: 0;
-    margin-left: 10%;
-    margin-bottom: 5px;
-    color: $form-h1-color;
-    text-align: left;
-    a {
-      color: $danger;
-      text-decoration: underline;
-    }
-  }
   h1 {
     text-align: center;
     font-size: 1.4em;
@@ -37,9 +26,6 @@ form {
     width: 80%;
     margin: 0 auto 20px;
     outline-color: $form-submit;
-  }
-  input[type="password"] {
-    margin-bottom: 0;
   }
   input[type="submit"] {
     background: $form-submit;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/_shared/services/user.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-navigation',
@@ -9,11 +11,21 @@ import { UserService } from 'src/app/_shared/services/user.service';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(public userSvc: UserService, private router: Router) { }
+  constructor(public userSvc: UserService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openProfile() {
+    let dialogRef = this.dialog.open(ProfileComponent, {
+      width: '600px',
+      data: {user: this.userSvc.user}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
 
   logoutUser() {
     this.userSvc.logoutUser().subscribe(() => {

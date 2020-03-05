@@ -10,7 +10,7 @@
     </div>
     <div class="side" *ngIf="userSvc.getLoginStatus()">
       <ul>
-        <li>Profil</li>
+        <li (click)="openProfile()">Profil</li>
         <li (click)="logoutUser()">Odhlasit</li>
       </ul>
     </div>

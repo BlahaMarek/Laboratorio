@@ -1,0 +1,9 @@
+<form [formGroup]="profileForm">
+    <h1>Resetovanie hesla</h1>
+    <label for="login">Vaš login</label>
+    <input id="login" autocomplete="login" type="text" formControlName="login">
+  
+    <input type="submit" [disabled]="!profileForm.valid" (click)="validateCardinalities()" value="Resetovať"/>
+  
+</form>
+<p><a routerLink="/login">Späť na prihlásenie</a></p>

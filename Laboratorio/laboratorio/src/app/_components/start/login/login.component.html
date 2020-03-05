@@ -5,9 +5,11 @@
   
     <label for="password">Heslo</label>
     <input id="password" autocomplete="current-password" type="password" formControlName="password">
+
+    <p>Zabudli ste heslo? <a routerLink="/reset">Zresetujte si ho</a></p>
   
+
     <input type="submit" [disabled]="!profileForm.valid" (click)="validateCardinalities()" value="Prihlásiť"/>
   
 </form>
-
 <p>Ešte nemáte účet? <a routerLink="/signup">Zaregistrujte sa</a></p>

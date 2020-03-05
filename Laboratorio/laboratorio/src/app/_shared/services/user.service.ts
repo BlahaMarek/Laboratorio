@@ -37,6 +37,14 @@ export class UserService {
     return this.http.post<any>(this.baseUrl + '/logout', {});
   }
   
+  resetPassword(login) {
+    return this.http.post<any>(this.baseUrl + '/reset', {login});
+  }
+  
+  updateProfile(user, id) {
+    return this.http.patch<any>(this.baseUrl + `/${id}`, user);
+  }
+
   getLoginStatus():boolean {
     return !!this.user;
   }

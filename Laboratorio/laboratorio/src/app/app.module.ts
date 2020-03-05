@@ -18,6 +18,8 @@ import { PageNotFoundComponent } from './_components/page-not-found/page-not-fou
 import { ProjectListComponent } from './_components/project/project-list/project-list.component';
 import { LoginComponent } from './_components/start/login/login.component';
 import { SignupComponent } from './_components/start/signup/signup.component';
+import { ResetComponent } from './_components/start/reset/reset.component';
+import { ProfileComponent } from './_components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SignupComponent } from './_components/start/signup/signup.component';
     PageNotFoundComponent,
     ProjectListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ResetComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { SignupComponent } from './_components/start/signup/signup.component';
     BrowserAnimationsModule,
     AppMaterialModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
@@ -46,7 +50,7 @@ import { SignupComponent } from './_components/start/signup/signup.component';
       multi: true
     },
   CanActivateRouteGuard,
-  HttpClientModule
+  HttpClientModule,
 ],
   bootstrap: [AppComponent]
 })

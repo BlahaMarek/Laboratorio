@@ -1,18 +1,20 @@
 <div class="box">
-    <h1>Moj reminder</h1>
-    <ul>
-      <li>Dopisat diplomku</li>
-      <li>Podojit kravu</li>
-      <li>Kultivovat hovno</li>
-      <li>Dosrat spektrofotometer</li>
-    </ul>
-  </div>
-  
-  <div class="box">
-    <h1>Labak</h1>
-    <ul>
-      <li>Hovno</li>
-      <li>2 hovna</li>
-    </ul>
-  </div>
-  
+  <h1>Moj reminder</h1>
+  <i class="material-icons">
+    add_box
+  </i>
+  <ul>
+    <li *ngFor="let task of tasks">
+      <div class="wrapper">
+        <div class="desc">
+          {{task.desc}}
+        </div>
+        <div class="delete">
+          <i class="material-icons">
+            delete_forever
+          </i>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

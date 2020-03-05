@@ -1,5 +1,7 @@
 <app-navigation></app-navigation>
-
+<div *ngIf="userSvc.getLoginStatus()" class="box">
+  <h1>Oznamy</h1>
+</div>
 <div class="wrapper">
   <aside class="aside-left" *ngIf="userSvc.getLoginStatus()">
     <app-chat-list></app-chat-list>

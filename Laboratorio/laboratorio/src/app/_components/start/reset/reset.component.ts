@@ -5,15 +5,14 @@ import { UserService } from 'src/app/_shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-reset',
+  templateUrl: './reset.component.html',
+  styleUrls: ['./reset.component.scss']
 })
-export class LoginComponent implements OnInit {
-  
+export class ResetComponent implements OnInit {
+
   profileForm = new FormGroup({
     login: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
   });
   constructor(
     private router: Router,
@@ -25,15 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   validateCardinalities() {
-    let user = {
-      login: this.profileForm.get('login').value,
-      password: this.profileForm.get('password').value
-    }
-
-    this.userSvc.loginUser(user).subscribe((data) => {
-      this.router.navigate(['/projects']);
+    this.userSvc.resetPassword(this.profileForm.get('login').value).subscribe((data) => {
+      this.router.navigate(['/login']);
     }, (err) => {
-      this._snackBar.open("Nesprávne prihlasovacie údaje", '', {
+      this._snackBar.open("Nepodarilo sa resetovať heslo. Skúste to neskôr.", '', {
         duration: 2000,
       });
     })

@@ -5,11 +5,13 @@ import { SignupComponent } from './_components/start/signup/signup.component';
 import { ProjectListComponent } from './_components/project/project-list/project-list.component';
 import { CanActivateRouteGuard } from './_guards/can-activate-route.guard';
 import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
+import { ResetComponent } from './_components/start/reset/reset.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'reset', component: ResetComponent },
   { path: 'projects', component: ProjectListComponent, canActivate: [CanActivateRouteGuard] },
   { path: '', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent }

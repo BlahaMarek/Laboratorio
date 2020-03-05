@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Úprava profilu</h1>
+<div mat-dialog-content>
+    <form [formGroup]="profileForm">
+        <mat-form-field appearance="fill" class="input-full-width">
+            <mat-label>Login: </mat-label>
+            <input disabled matInput [value]="data.user.user.login">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input-full-width">
+            <mat-label>Role: </mat-label>
+            <input disabled matInput [value]="data.user.user.roles">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input-full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input-full-width">
+            <mat-label>Nové heslo</mat-label>
+            <input matInput formControlName="password">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input-full-width">
+            <mat-label>Potvrdenie hesla</mat-label>
+            <input matInput formControlName="passwordConfirm">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onSaveClick()">Ulož zmeny</button>
+  <button mat-button (click)="onNoClick()">Zrušiť</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div>
