@@ -1,16 +1,22 @@
 $black: #000;
 $white: #fff;
 $white-transparent: rgba(255, 255, 255, 0.75);
-$primary-color: #344a71;
-$nav-color: #5ec2a2;
-$danger: #ffa593;
+$box-shadow: 0px 15px 30px 5px rgba(0,0,0,0.15);
+$primary-color: linear-gradient(to right, #04c1aa 0%, #189fbe 100%), linear-gradient(to right, #04c1aa 0%, #189fbe 100%);
+$nav-color: linear-gradient(to right, #f96095 0%, #fd7c5e 100%), -webkit-linear-gradient(left, #f96095 0%, #fd7c5e 100%);
+$danger: #f96095;
 
 
 //form
 $form-border: #cdc7c7;
-$form-submit: #5ec2a2;
+$form-submit: -webkit-linear-gradient(left, #f96095 0%, #fd7c5e 100%), -webkit-linear-gradient(left, #f96095 0%, #fd7c5e 100%);
 $label-color: #848080;
 $form-h1-color: #4c4c4c;
 
 //chat
 $chat-heading: #F62459;
+
+//ul
+$li-element-icon: #04bfa8;
+
+

@@ -3,4 +3,6 @@ export class Task {
     desc: String;
     done:boolean;
     personRef?: String;
+    report: boolean;
+    group: String;
 }

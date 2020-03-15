@@ -3,9 +3,7 @@
   
     <div class="main" *ngIf="userSvc.getLoginStatus()">
       <ul>
-        <li>O projekte</li>
-        <li>Nieco</li>
-        <li>Ine</li>
+        <li (click)="openGroups()">Pracovné skupiny</li>
       </ul>
     </div>
     <div class="side" *ngIf="userSvc.getLoginStatus()">

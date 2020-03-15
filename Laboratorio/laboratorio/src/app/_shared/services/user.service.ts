@@ -13,6 +13,7 @@ export class UserService {
   
   constructor(private http: HttpClient) {}
   
+
   createUser(user) {
     return this.http.post<any>(this.baseUrl, user).pipe(
       map( usr => {
@@ -47,5 +48,12 @@ export class UserService {
 
   getLoginStatus():boolean {
     return !!this.user;
+  }
+
+  isSkolitel():boolean {
+    if (!this.user['user'].roles.length) {
+      return false;
+    }
+    return this.user['user'].roles.map(item => item.role).includes('ROLE_SKOLITEL')
   }
 }

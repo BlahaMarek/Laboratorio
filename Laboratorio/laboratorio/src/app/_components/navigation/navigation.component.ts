@@ -16,6 +16,17 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openGroups() {
+    let dialogRef = this.dialog.open(ProfileComponent, {
+      width: '600px',
+      data: {user: this.userSvc.user}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
+
   openProfile() {
     let dialogRef = this.dialog.open(ProfileComponent, {
       width: '600px',

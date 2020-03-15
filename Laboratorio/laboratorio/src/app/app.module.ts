@@ -20,6 +20,9 @@ import { LoginComponent } from './_components/start/login/login.component';
 import { SignupComponent } from './_components/start/signup/signup.component';
 import { ResetComponent } from './_components/start/reset/reset.component';
 import { ProfileComponent } from './_components/profile/profile.component';
+import { LabComponent } from './_components/lab/lab.component';
+import { AddReportModalComponent } from './_components/notifi/add-report-modal/add-report-modal.component';
+import { ProjectItemComponent } from './_components/project/project-item/project-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { ProfileComponent } from './_components/profile/profile.component';
     LoginComponent,
     SignupComponent,
     ResetComponent,
-    ProfileComponent
+    ProfileComponent,
+    LabComponent,
+    AddReportModalComponent,
+    ProjectItemComponent
   ],
   imports: [
     BrowserModule,

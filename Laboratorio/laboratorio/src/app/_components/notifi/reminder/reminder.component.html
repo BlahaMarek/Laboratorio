@@ -1,17 +1,30 @@
 <div class="box">
-  <h1>Moj reminder</h1>
-  <i class="material-icons">
-    add_box
-  </i>
+  <div class="wrapper">
+    <div class="desc">
+      <h1>{{title}}</h1>
+    </div>
+    <div class="delete" *ngIf="canEdit">
+      <i (click)="addItem()" class="material-icons add">
+        add_box
+      </i>
+    </div>
+  </div>
   <ul>
-    <li *ngFor="let task of tasks">
+    <li *ngFor="let task of tasks$ | async">
       <div class="wrapper">
         <div class="desc">
-          {{task.desc}}
+          <span>
+            <i class="material-icons li-element">
+            fiber_smart_record
+            </i>
+          </span>
+          <span>
+            {{task.desc}}
+          </span>
         </div>
-        <div class="delete">
-          <i class="material-icons">
-            delete_forever
+        <div class="delete" (click)="removeItem(task)" *ngIf="canEdit"> 
+          <i class="material-icons remove-icon">
+            clear
           </i>
         </div>
       </div>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Pridanie zaznamu</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill" class="input-full-width">
+        <mat-label>Pridaj záznam</mat-label>
+        <input matInput [(ngModel)]="item" required>
+    </mat-form-field>
+    <mat-form-field *ngIf="data.type == 'lab'" class="input-full-width">
+        <mat-label>Pracovná skupina</mat-label>
+        <mat-select [(ngModel)]="group" required>
+            <mat-option *ngFor="let groupItem of groups" [value]="groupItem.group">
+                {{groupItem.group}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button *ngIf="data.type == 'lab'" [disabled]="!(!!group && !!item)" (click)="onSave()">Ulož zmeny</button>
+    <button mat-button *ngIf="data.type != 'lab'" [disabled]="!item" (click)="onSave()">Ulož zmeny</button>
+    <button mat-button (click)="onNoClick()">Zrušiť</button>
+</div>

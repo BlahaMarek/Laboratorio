@@ -9,6 +9,6 @@ import { UserService } from './_shared/services/user.service';
 export class AppComponent {
   title = 'laboratorio';
   
-  constructor(public userSvc: UserService) {}
+  constructor() {}
 
 }

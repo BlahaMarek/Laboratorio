@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.userSvc.loginUser(user).subscribe((data) => {
-      this.router.navigate(['/projects']);
+      this.router.navigate(['/lab']);
     }, (err) => {
       this._snackBar.open("Nesprávne prihlasovacie údaje", '', {
         duration: 2000,

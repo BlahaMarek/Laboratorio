@@ -13,12 +13,34 @@ html, body { height: 100%; }
   box-sizing: border-box;
 }
 .box {
-  background: $white-transparent;
+  background: $white;
+  box-shadow: $box-shadow;
   border-radius: 3px;
   padding: 10px;
-  margin: 5px;
+  margin: 10px;
+  position: relative;
+}
+
+.add {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  background: $nav-color;
+  text-align: center;
+  display: inline-block;
+  color: $white;
+  &:hover {
+    transition: all 0.1s linear;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
 
 .input-full-width {
   width: 100%;
 }
+
+.li-element {
+  color: $nav-color;
+}
+

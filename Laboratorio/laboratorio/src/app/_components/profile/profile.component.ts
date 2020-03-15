@@ -11,6 +11,7 @@ import { UserService } from 'src/app/_shared/services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  roles: String[];
   profileForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl(''),
@@ -24,6 +25,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() :void {
     console.log(this.data.user)
+    this.roles = this.data.user.user.roles.map(item => item.role);
+    console.log(this.roles);
     this.profileForm.get('email').setValue(this.data.user.user.email);
   }
 

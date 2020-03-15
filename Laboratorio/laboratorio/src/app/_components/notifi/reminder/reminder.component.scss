@@ -1,3 +1,5 @@
+@import '../../../../assets/variables';
+
 .wrapper {
     display: flex;
 }
@@ -8,4 +10,37 @@
 
 .delete {
     flex-grow: 1;
+    text-align: right;
+}
+
+.remove-icon {
+    color: $danger;
+    margin-right: 5px;
+    transition: 0.1s all linear;
+    &:hover {
+        transform: rotateZ(90deg);
+        cursor: pointer;
+    }
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+    li {
+        margin-bottom: 6px;
+    }
+}
+
+.li-element {
+    position: relative;
+    top: 6px;
+    font-size: 1.4em;
+    color: $li-element-icon;
 }
