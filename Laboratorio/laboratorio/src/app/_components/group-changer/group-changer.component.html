@@ -1,0 +1,36 @@
+<div *ngIf="ready">
+    <h1 mat-dialog-title>Pracovné skupiny</h1>
+
+    <div mat-dialog-content>
+        <h3>Vytvorenie novej skupiny</h3>
+        <mat-form-field>
+            <mat-label>Názov novej skupiny</mat-label>
+            <input matInput [(ngModel)]="newGroup" required>
+        </mat-form-field>
+        
+        <div mat-dialog-actions align="end">
+            <button mat-button (click)="save()">Uložiť</button>
+        </div>
+        
+        <h3>Správa používateľov</h3>
+        <mat-form-field>
+            <mat-label>Používateľ</mat-label>
+            <mat-select [(ngModel)]="userSelected">
+                <mat-option *ngFor="let user of users" [value]="user" (click)="userClicked(user)">
+                    {{user.login}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div *ngIf="userSelected">
+            <div *ngFor="let group of groups ">
+                <span>{{group.group}}</span>
+                <span class="right" (click)="deleteGroup(group)">X</span>
+            </div>
+        </div>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Zrušiť</button>
+</div>
+</div>

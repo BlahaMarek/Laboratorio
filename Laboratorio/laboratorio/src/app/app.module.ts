@@ -23,6 +23,7 @@ import { ProfileComponent } from './_components/profile/profile.component';
 import { LabComponent } from './_components/lab/lab.component';
 import { AddReportModalComponent } from './_components/notifi/add-report-modal/add-report-modal.component';
 import { ProjectItemComponent } from './_components/project/project-item/project-item.component';
+import { GroupChangerComponent } from './_components/group-changer/group-changer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ProjectItemComponent } from './_components/project/project-item/project
     ProfileComponent,
     LabComponent,
     AddReportModalComponent,
-    ProjectItemComponent
+    ProjectItemComponent,
+    GroupChangerComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/_shared/services/user.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProfileComponent } from '../profile/profile.component';
+import { GroupChangerComponent } from '../group-changer/group-changer.component';
 
 @Component({
   selector: 'app-navigation',
@@ -17,7 +18,7 @@ export class NavigationComponent implements OnInit {
   }
 
   openGroups() {
-    let dialogRef = this.dialog.open(ProfileComponent, {
+    let dialogRef = this.dialog.open(GroupChangerComponent, {
       width: '600px',
       data: {user: this.userSvc.user}
     });
