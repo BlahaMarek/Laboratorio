@@ -1,3 +1,48 @@
+@import '../../../assets/variables';
+
 mat-form-field {
     width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+    li {
+        margin-bottom: 6px;
+    }
+}
+
+.wrapper {
+    display: flex;
+}
+
+.desc {
+    flex-grow: 6;
+}
+
+.delete {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.remove-icon {
+    color: $danger;
+    margin-right: 5px;
+    transition: 0.1s all linear;
+    &:hover {
+        transform: rotateZ(90deg);
+        cursor: pointer;
+    }
+}
+
+#closeModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.all {
+    position: relative;
 }

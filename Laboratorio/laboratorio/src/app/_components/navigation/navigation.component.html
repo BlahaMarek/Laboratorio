@@ -3,7 +3,7 @@
   
     <div class="main" *ngIf="userSvc.getLoginStatus()">
       <ul>
-        <li (click)="openGroups()">Pracovné skupiny</li>
+        <li *ngIf="userSvc.isSkolitel()" (click)="openGroups()">Pracovné skupiny</li>
       </ul>
     </div>
     <div class="side" *ngIf="userSvc.getLoginStatus()">

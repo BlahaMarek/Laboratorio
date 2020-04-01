@@ -24,6 +24,8 @@ import { LabComponent } from './_components/lab/lab.component';
 import { AddReportModalComponent } from './_components/notifi/add-report-modal/add-report-modal.component';
 import { ProjectItemComponent } from './_components/project/project-item/project-item.component';
 import { GroupChangerComponent } from './_components/group-changer/group-changer.component';
+import { CalendarComponent } from './_components/notifi/calendar/calendar.component';
+import { CalendarModalComponent } from './_components/notifi/calendar-modal/calendar-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { GroupChangerComponent } from './_components/group-changer/group-changer
     LabComponent,
     AddReportModalComponent,
     ProjectItemComponent,
-    GroupChangerComponent
+    GroupChangerComponent,
+    CalendarComponent,
+    CalendarModalComponent,
   ],
   imports: [
     BrowserModule,

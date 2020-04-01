@@ -1,0 +1,34 @@
+<form [formGroup]="calendarForm">
+    <mat-form-field>
+        <mat-label>Naočkované dňa</mat-label>
+        <input matInput [matDatepicker]="picker"  formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Mikroorganizmus</mat-label>
+        <input matInput  formControlName="micro">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Kultivačná perióda (dni)</mat-label>
+        <input matInput type="number" formControlName="period">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Popis</mat-label>
+        <input matInput type="number" formControlName="desc">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Skupina</mat-label>
+        <mat-select formControlName="group">
+            <mat-option *ngFor="let myGroup of this.userSvc.getGroups()" [value]="myGroup">
+                {{myGroup}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<span class="daysLeft" *ngIf="!this.data.edit">Zostáva <b>{{daysLeft}}</b> dní.</span>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Zrušiť</button>
+    <button *ngIf="!this.data.edit"mat-button (click)="onDelete()">Vymazať</button>
+    <button *ngIf="this.data.edit" mat-button (click)="save()">Uložiť</button>
+</div>

@@ -1,4 +1,4 @@
-<div *ngIf="!!user && user['user'].groups.length > 0">
+<div *ngIf="!!user && (user['user'].groups.length > 0 || userSvc.isSkolitel())">
     <div *ngIf="userSvc.getLoginStatus()">
         <app-reminder [canEdit]="userSvc.isSkolitel()" [title]="'Oznamy'" [tasks$]="this.taskSvc.$reports" [type]="'reports'"></app-reminder>
     </div>
@@ -12,11 +12,12 @@
         <aside class="aside-right" *ngIf="userSvc.getLoginStatus()">
             <app-reminder [canEdit]="true" [title]="'Moje úlohy'" [tasks$]="this.taskSvc.$myTasks" [type]="'my'"></app-reminder>
             <app-reminder [canEdit]="userSvc.isSkolitel()" [title]="'Skupinové úlohy'" [tasks$]="this.taskSvc.$labTasks" [type]="'lab'"></app-reminder>
+            <app-calendar ></app-calendar>
         </aside>
     </div>
 </div>
 
-<div class="box" *ngIf="user['user'].groups.length == 0">
+<div class="box" *ngIf="user['user'].groups.length == 0 && !userSvc.isSkolitel()">
     <h1>Nie ste zaradený do žiadnej pracovnej skupiny.</h1>
     <p>Požiadajte svojho školitela o zaradenie a zopakujte prihlásenie.</p>
 </div>

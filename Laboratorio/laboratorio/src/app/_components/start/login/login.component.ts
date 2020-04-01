@@ -22,6 +22,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const currentUser = localStorage.getItem('currentUser');
+
+    if (currentUser) {
+      console.log(JSON.parse(currentUser));
+      this.userSvc.user = JSON.parse(currentUser);
+      this.router.navigate(['/lab']);
+    }
   }
 
   validateCardinalities() {

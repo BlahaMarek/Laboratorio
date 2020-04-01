@@ -24,9 +24,7 @@ export class ProfileComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() :void {
-    console.log(this.data.user)
     this.roles = this.data.user.user.roles.map(item => item.role);
-    console.log(this.roles);
     this.profileForm.get('email').setValue(this.data.user.user.email);
   }
 

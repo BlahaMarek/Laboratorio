@@ -1,11 +1,11 @@
-<div *ngIf="ready">
+<div *ngIf="ready" class="all">
     <h1 mat-dialog-title>Pracovné skupiny</h1>
 
     <div mat-dialog-content>
         <h3>Vytvorenie novej skupiny</h3>
         <mat-form-field>
             <mat-label>Názov novej skupiny</mat-label>
-            <input matInput [(ngModel)]="newGroup" required>
+            <input matInput [(ngModel)]="newGroup">
         </mat-form-field>
         
         <div mat-dialog-actions align="end">
@@ -23,14 +23,36 @@
         </mat-form-field>
 
         <div *ngIf="userSelected">
-            <div *ngFor="let group of groups ">
-                <span>{{group.group}}</span>
-                <span class="right" (click)="deleteGroup(group)">X</span>
+            <h3>Skupiny používateľa {{userSelected.login}}</h3>
+            <ul>
+                <li *ngFor="let group of groups">
+                  <div class="wrapper">
+                    <div class="desc">
+                      <span>
+                        {{group.group}}
+                      </span>
+                    </div>
+                    <div class="delete" (click)="deleteGroup(group)"> 
+                      <i class="material-icons remove-icon">
+                        clear
+                      </i>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+            <mat-form-field>
+                <mat-label>Pridaj skupinu</mat-label>
+                <mat-select [(ngModel)]="addGroup">
+                    <mat-option *ngFor="let group of this.userSvc.user['user'].groups" [value]="group.group">
+                        {{group.group}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div mat-dialog-actions align="end">
+                <button mat-button (click)="addGroupToUser()">Pridaj</button>
             </div>
         </div>
 </div>
 
-<div mat-dialog-actions align="end">
-    <button mat-button (click)="onNoClick()">Zrušiť</button>
-</div>
+    <i  (click)="onNoClick()" id="closeModal" class="material-icons remove-icon">clear</i>
 </div>

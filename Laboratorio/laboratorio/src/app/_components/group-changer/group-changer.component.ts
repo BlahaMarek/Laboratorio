@@ -15,6 +15,7 @@ export class GroupChangerComponent implements OnInit {
   userSelected = null;
   groups = [];
   newGroup = "";
+  addGroup = ""
 
   constructor(private taskSvc: TaskService,
     public userSvc: UserService,
@@ -37,18 +38,20 @@ export class GroupChangerComponent implements OnInit {
     }
 
     this.groups = user.groups;
-    console.log(this.groups);
   }
 
   deleteGroup(group) {
-    console.log(this.userSelected._id);
-    console.log(group);
-    this.userSvc.removeGroup(this.userSelected._id, group.group).subscribe();
+    this.dialogRef.close();
+    this.userSvc.removeGroup(this.userSelected._id, group.group).subscribe(user => this.userSelected = user);
   }
 
   save() {
-    console.log(this.newGroup);
+    this.userSvc.addGroup(this.userSvc.user['user']._id, this.newGroup).subscribe(user => {this.userSvc.user['user'] = user; console.log(user)});
     this.dialogRef.close();
-    this.userSvc.addGroup(this.userSvc.user['user']._id, this.newGroup).subscribe();
+  }
+
+  addGroupToUser() {
+    this.userSvc.addGroup(this.userSelected._id, this.addGroup).subscribe(user => this.userSelected = user);
+    this.dialogRef.close();
   }
 }

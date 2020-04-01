@@ -1,0 +1,28 @@
+<div class="box">
+    <div class="wrapper">
+      <div class="desc">
+        <h1>Kultivačný kalendár</h1>
+      </div>
+      <div class="delete">
+        <i (click)="addItem()" class="material-icons add">
+          add_box
+        </i>
+      </div>
+    </div>
+    <ul>
+      <li *ngFor="let item of calendarItems"  >
+        <div [class]="item.badge + ' wrapper'" >
+          <div class="desc" (click)="openCalendarItem(item)">
+            <span>
+              {{formatString(item.micro)}}
+            </span>
+          </div>
+          <div class="delete" (click)="done(item._id)"> 
+            <i class="material-icons remove-icon">
+              done
+            </i>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>

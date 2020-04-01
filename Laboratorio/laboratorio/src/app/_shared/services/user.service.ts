@@ -72,6 +72,10 @@ export class UserService {
     return !!this.user;
   }
 
+  getGroups(): String[] {
+    return this.user['user'].groups.map(group => group.group);
+  }
+
   isSkolitel():boolean {
     if (!this.user['user'].roles.length) {
       return false;
