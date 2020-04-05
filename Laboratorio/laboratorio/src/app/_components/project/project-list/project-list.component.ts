@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/_models/Project';
+import { ProjectService } from 'src/app/_shared/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-
-  constructor() { }
+  projects: Project[] = [];
+  constructor(private projectSvc: ProjectService) { }
 
   ngOnInit(): void {
+    this.projectSvc.loadMyProjects();
+    this.projectSvc.$myProjects.subscribe(data => {console.log(data); this.projects = data})
   }
 
   addProject() {

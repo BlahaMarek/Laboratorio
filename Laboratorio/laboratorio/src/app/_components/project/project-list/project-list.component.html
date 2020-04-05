@@ -1,6 +1,9 @@
 <div class="box">
-    <h1>Projekty</h1>
-    <i (click)="addProject()" class="material-icons add">
-        add_box
-      </i>
+  <h1>Projekty</h1>
+  <i (click)="addProject()" class="material-icons add">
+    add_box
+  </i>
+  <div class="project-item" *ngFor="let project of projects">
+    <app-project-item></app-project-item>
+  </div>
 </div>

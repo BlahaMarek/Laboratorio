@@ -10,18 +10,18 @@ export class ProjectService {
 
   baseUrl: string = 'http://localhost:3000/projects/';
 
-  private _myProject = new BehaviorSubject([])
-  $myProject: Observable<Project[]> = this._myProject.asObservable();
+  private _myProjects = new BehaviorSubject([])
+  $myProjects: Observable<Project[]> = this._myProjects.asObservable();
 
   
   constructor(private http: HttpClient) { }
 
-  loadMyCalendar(id) {
-    this.http.get<any>(this.baseUrl + `${id}`).subscribe(data => this._myProject.next(data));
+  loadMyProjects() {
+    this.http.get<any>(this.baseUrl).subscribe(data => this._myProjects.next(data));
   }
 
   setCalendar(val: Project[]) {
-    this._myProject.next(val);
-    console.log(this._myProject.getValue())
+    this._myProjects.next(val);
+    console.log(this._myProjects.getValue())
   }
 }

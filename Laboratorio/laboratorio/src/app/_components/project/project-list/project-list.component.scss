@@ -1,5 +1,16 @@
+@import '../../../../assets/variables';
+
 .add {
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+.project-item {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    &:hover {
+        background-color: $white-hover;
+    } 
 }

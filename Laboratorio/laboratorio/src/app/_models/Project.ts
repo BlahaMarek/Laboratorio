@@ -3,6 +3,7 @@ export class Project {
     startDate: Date;
     name: String;
     desc: String;
+    group: String;
 
     constructor() {
         this._id = "";
