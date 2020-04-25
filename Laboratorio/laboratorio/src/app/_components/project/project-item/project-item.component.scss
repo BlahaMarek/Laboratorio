@@ -1,0 +1,60 @@
+@import "../../../../assets/variables";
+
+.wrapper {
+    width: 100px;
+    margin: 0 auto;
+}
+.center {
+    text-align: center;
+}
+.inputData {
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 3px;
+    padding: 5px 0;
+    text-align: center;
+    background: $form-submit;
+    border: none;
+    outline: none;
+    color: $white;
+    &:hover{
+      cursor: pointer;
+    }
+}
+
+.name {
+    width: 100%;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.date {
+    width: 100%;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.me {
+    text-align: right;
+}
+
+.meWrap {
+    background-color: #E5989B !important;
+    padding: 10px;
+}
+
+.normalWrap {
+    padding: 10px;
+}
+.total:nth-child(even) {
+    background-color: #FFB4A2;
+}
+
+.total:nth-child(odd) {
+    background-color: #FFCDB2;
+}
+
+.editorWrap {
+    margin-top: 20px;
+}

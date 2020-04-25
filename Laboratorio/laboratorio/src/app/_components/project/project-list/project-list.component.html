@@ -4,6 +4,7 @@
     add_box
   </i>
   <div class="project-item" *ngFor="let project of projects">
-    <app-project-item></app-project-item>
+      <!-- <app-project-item [project]="project"></app-project-item> -->
+      <div (click)="concreteProject(project._id)">{{project.name}}</div>
   </div>
 </div>

@@ -7,18 +7,21 @@ import { CanActivateRouteGuard } from './_guards/can-activate-route.guard';
 import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
 import { ResetComponent } from './_components/start/reset/reset.component';
 import { LabComponent } from './_components/lab/lab.component';
+import { ProjectItemComponent } from './_components/project/project-item/project-item.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'reset', component: ResetComponent },
-  { path: 'lab', 
+  { 
+    path: 'lab', 
     component: LabComponent, 
     canActivate: [CanActivateRouteGuard], 
     children: [
-      {path: '', component: ProjectListComponent},
       {path: 'projects', component: ProjectListComponent},
+      {path: 'project/:id', component: ProjectItemComponent},
+      {path: '', component: ProjectListComponent},
     ]
   },
   { path: '', component: LoginComponent },

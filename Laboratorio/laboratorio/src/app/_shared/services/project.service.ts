@@ -20,8 +20,16 @@ export class ProjectService {
     this.http.get<any>(this.baseUrl).subscribe(data => this._myProjects.next(data));
   }
 
-  setCalendar(val: Project[]) {
+  setProject(val: Project[]) {
     this._myProjects.next(val);
     console.log(this._myProjects.getValue())
+  }
+
+  getProjectById(_id): Observable<Project> {
+    return this.http.get<any>(this.baseUrl + _id);
+  }
+
+  postComent(_id, comment: {date: Date; person: String; comentBody: String;}) {
+    return this.http.post<any>(this.baseUrl + _id + '/comment', comment);
   }
 }

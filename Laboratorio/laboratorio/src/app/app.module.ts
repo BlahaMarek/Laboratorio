@@ -26,6 +26,7 @@ import { ProjectItemComponent } from './_components/project/project-item/project
 import { GroupChangerComponent } from './_components/group-changer/group-changer.component';
 import { CalendarComponent } from './_components/notifi/calendar/calendar.component';
 import { CalendarModalComponent } from './_components/notifi/calendar-modal/calendar-modal.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CalendarModalComponent } from './_components/notifi/calendar-modal/cale
     AppMaterialModule,
     SharedModule,
     HttpClientModule,
+    CKEditorModule
   ],
   providers: [
     {

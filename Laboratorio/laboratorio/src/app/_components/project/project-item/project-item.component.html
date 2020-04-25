@@ -1,1 +1,32 @@
-<p>project-item works!</p>
+<div class="box">
+    <div *ngIf="!!project">
+        <h1>Projekt: {{project.name}}</h1>
+
+        <div class="total" *ngFor="let comment of project.desc">
+            <div class="normalWrap" [class.meWrap]="this.userSvc.user['user'].login == comment.person">
+                <div [class.me]="this.userSvc.user['user'].login == comment.person">
+                    <span class="name">
+                        {{comment.person}}
+                    </span>
+                    <span class="date">
+                        {{formatDate(comment.date)}}
+                    </span>
+                </div>
+                <hr>
+                <div [innerHtml]="comment.comentBody"></div>
+            </div>
+        </div>
+
+        <div class="editorWrap">
+            <ckeditor [config]="conf" [(ngModel)]="editorData" [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+        </div>
+        <div class="center">
+            <input class="inputData" (click)="addDocumentToProject()" type="submit" value="Zapisať" />
+        </div>
+
+    </div>
+    <div class="wrapper" *ngIf="!project">
+        <mat-spinner></mat-spinner>
+    </div>
+
+</div>
