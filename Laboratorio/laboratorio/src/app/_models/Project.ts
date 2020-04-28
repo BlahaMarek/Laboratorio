@@ -3,9 +3,14 @@ export class Project {
     startDate: Date;
     name: String;
     group: String;
-    desc: [{
-        date: Date;
-        person: String;
-        comentBody: String;
-    }];
+    workDates: Map<String, {
+        desc: [{
+            date: Date;
+            person: String;
+            comentBody: String;
+        }],
+        experiments: [{
+            person: String;
+        }]
+    }>;
 }

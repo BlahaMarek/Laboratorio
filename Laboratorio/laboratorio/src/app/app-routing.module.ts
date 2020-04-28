@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './_components/page-not-found/page-not-fou
 import { ResetComponent } from './_components/start/reset/reset.component';
 import { LabComponent } from './_components/lab/lab.component';
 import { ProjectItemComponent } from './_components/project/project-item/project-item.component';
+import { ProjectDetailComponent } from './_components/project/project-detail/project-detail.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     children: [
       {path: 'projects', component: ProjectListComponent},
       {path: 'project/:id', component: ProjectItemComponent},
+      {path: 'project/:id/:date', component: ProjectDetailComponent},
       {path: '', component: ProjectListComponent},
     ]
   },

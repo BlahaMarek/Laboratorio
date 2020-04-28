@@ -1,0 +1,25 @@
+<h1>Nový projekt</h1>
+<form [formGroup]="projectForm">
+    <mat-form-field>
+        <mat-label>Začiatok projektu</mat-label>
+        <input matInput [matDatepicker]="picker"  formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Názov</mat-label>
+        <input matInput  formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Skupina</mat-label>
+        <mat-select formControlName="group">
+            <mat-option *ngFor="let myGroup of this.userSvc.getGroups()" [value]="myGroup">
+                {{myGroup}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Zrušiť</button>
+    <button *ngIf="this.data.edit" mat-button (click)="save()">Uložiť</button>
+</div>

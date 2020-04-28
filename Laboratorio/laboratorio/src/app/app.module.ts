@@ -27,6 +27,11 @@ import { GroupChangerComponent } from './_components/group-changer/group-changer
 import { CalendarComponent } from './_components/notifi/calendar/calendar.component';
 import { CalendarModalComponent } from './_components/notifi/calendar-modal/calendar-modal.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ProjectDetailComponent } from './_components/project/project-detail/project-detail.component';
+import { NewProjectModalComponent } from './_components/project/new-project-modal/new-project-modal.component';
+import { NewProjectDateModalComponent } from './_components/project/new-project-date-modal/new-project-date-modal.component';
+import { ExperimentListComponent } from './_components/project/experiment-list/experiment-list.component';
+import { ExperimentItemComponent } from './_components/project/experiment-item/experiment-item.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     GroupChangerComponent,
     CalendarComponent,
     CalendarModalComponent,
+    ProjectDetailComponent,
+    NewProjectModalComponent,
+    NewProjectDateModalComponent,
+    ExperimentListComponent,
+    ExperimentItemComponent,
   ],
   imports: [
     BrowserModule,

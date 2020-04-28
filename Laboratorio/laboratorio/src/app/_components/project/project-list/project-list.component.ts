@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Project } from 'src/app/_models/Project';
 import { ProjectService } from 'src/app/_shared/services/project.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { NewProjectModalComponent } from '../new-project-modal/new-project-modal.component';
 
 @Component({
   selector: 'app-project-list',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 export class ProjectListComponent implements OnInit {
   projects: Project[] = [];
  
-  constructor(private projectSvc: ProjectService, private router: Router) { }
+  constructor(private projectSvc: ProjectService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.projectSvc.loadMyProjects();
@@ -19,7 +21,10 @@ export class ProjectListComponent implements OnInit {
   }
 
   addProject() {
-    
+    const dialogRef = this.dialog.open(NewProjectModalComponent, {
+      width: '600px',
+      data: {edit: true, item: new Project()}
+    })
   }
 
   concreteProject(_id) {

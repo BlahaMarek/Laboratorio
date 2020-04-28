@@ -1,0 +1,14 @@
+<h1>Pridanie dátumu</h1>
+
+<div>
+    <mat-form-field>
+        <mat-label>Dátum</mat-label>
+        <input matInput [matDatepicker]="picker"  [(ngModel)]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Zrušiť</button>
+    <button *ngIf="this.data.edit" mat-button (click)="save()">Uložiť</button>
+</div>

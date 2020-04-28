@@ -13,9 +13,14 @@
     <li *ngFor="let task of tasks$ | async">
       <div class="wrapper">
         <div class="desc">
-          <span>
+          <span *ngIf="this.type !== 'reports'">
             <i class="material-icons li-element">
             fiber_smart_record
+            </i>
+          </span>
+          <span *ngIf="this.type === 'reports'">
+            <i class="material-icons li-element danger">
+              warning
             </i>
           </span>
           <span>

@@ -1,27 +1,13 @@
 <div class="box">
     <div *ngIf="!!project">
         <h1>Projekt: {{project.name}}</h1>
-
-        <div class="total" *ngFor="let comment of project.desc">
-            <div class="normalWrap" [class.meWrap]="this.userSvc.user['user'].login == comment.person">
-                <div [class.me]="this.userSvc.user['user'].login == comment.person">
-                    <span class="name">
-                        {{comment.person}}
-                    </span>
-                    <span class="date">
-                        {{formatDate(comment.date)}}
-                    </span>
-                </div>
-                <hr>
-                <div [innerHtml]="comment.comentBody"></div>
-            </div>
-        </div>
-
-        <div class="editorWrap">
-            <ckeditor [config]="conf" [(ngModel)]="editorData" [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
-        </div>
-        <div class="center">
-            <input class="inputData" (click)="addDocumentToProject()" type="submit" value="Zapisať" />
+        <span class="undoSpan material-icons" (click)="onBackClicked()">undo</span>
+        <i (click)="addNewDate()" class="material-icons add">
+            add_box
+          </i>
+        <div class="projectDate" (click)="showDataByDate(date)" *ngFor="let date of datesArray">
+            <span class="material-icons">event</span>
+            <span class="date" >{{date}}</span>
         </div>
 
     </div>

@@ -1,0 +1,87 @@
+@import "../../../../assets/variables";
+
+.wrapper {
+    width: 100px;
+    margin: 0 auto;
+}
+.center {
+    text-align: center;
+}
+.inputData {
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 3px;
+    padding: 5px 0;
+    text-align: center;
+    background: $form-submit;
+    border: none;
+    outline: none;
+    color: $white;
+    &:hover{
+      cursor: pointer;
+    }
+}
+
+.name {
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.date {
+    width: 100%;
+    display: inline-block;
+    font-size: 10px;
+}
+.basicInfo {
+    line-height: 12px;
+}
+.me {
+    text-align: right;
+    color: #189fbe !important;
+}
+
+.meWrap {
+    background-color: $box1-soft !important;
+    padding: 10px;
+    hr {
+        border: 0.1px solid #189fbe !important;
+    }
+}
+
+.normalWrap {
+    padding: 10px;
+    margin: 10px 0;
+}
+.total {
+    background-color: $box2-soft;
+    hr {
+        border: 0.1px solid #fd7b5f;
+    }
+    .basicInfo {
+        color: #fd7b5f;
+    }
+}
+
+
+.editorWrap {
+    margin-top: 20px;
+}
+
+.spin {
+    width: 100px;
+    margin: 0 auto;
+}
+
+.undoSpan {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #f96094;
+    transition: 0.2s all linear;
+    &:hover {
+        cursor: pointer;
+        right: 20px;
+    }
+}

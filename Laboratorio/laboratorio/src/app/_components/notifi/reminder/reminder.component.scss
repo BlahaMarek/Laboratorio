@@ -40,7 +40,12 @@ ul {
 
 .li-element {
     position: relative;
-    top: 6px;
+    top: 5px;
     font-size: 1.4em;
     color: $li-element-icon;
+}
+
+.danger {
+    color: $danger;
+    top: 4px;
 }
