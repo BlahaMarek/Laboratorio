@@ -32,6 +32,7 @@ import { NewProjectModalComponent } from './_components/project/new-project-moda
 import { NewProjectDateModalComponent } from './_components/project/new-project-date-modal/new-project-date-modal.component';
 import { ExperimentListComponent } from './_components/project/experiment-list/experiment-list.component';
 import { ExperimentItemComponent } from './_components/project/experiment-item/experiment-item.component';
+import { ChatModalComponent } from './_components/chat/chat-modal/chat-modal.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ExperimentItemComponent } from './_components/project/experiment-item/e
     NewProjectDateModalComponent,
     ExperimentListComponent,
     ExperimentItemComponent,
+    ChatModalComponent,
   ],
   imports: [
     BrowserModule,

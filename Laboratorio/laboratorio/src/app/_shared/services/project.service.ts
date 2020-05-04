@@ -48,4 +48,9 @@ export class ProjectService {
   postComent(_id, comment: {date: Date; person: String; comentBody: String;}, date) {
     return this.http.post<any>(this.baseUrl + _id + '/comment', {comment, date});
   }
+
+  postExperiment(_id, experiment, date) {
+    return this.http.post<any>(this.baseUrl + _id + '/experiment', {experiment, date});
+  }
+  
 }

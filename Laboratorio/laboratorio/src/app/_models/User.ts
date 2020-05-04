@@ -1,16 +1,16 @@
 export class User {
-    _id: String;
-    login: String;
-    email: String;
-    password: String;
+    _id: string;
+    login: string;
+    email: string;
+    password: string;
     roles: [
         {
-            _id: String,
-            role: String
+            _id: string,
+            role: string
         }];
     groups: [
         {
-            _id: String,
-            group: String
+            _id: string,
+            group: string
         }];
 }

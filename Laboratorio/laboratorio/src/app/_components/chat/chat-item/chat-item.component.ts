@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ChatModalComponent } from '../chat-modal/chat-modal.component';
 
 @Component({
   selector: 'app-chat-item',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-item.component.scss']
 })
 export class ChatItemComponent implements OnInit {
-
-  constructor() { }
+  @Input() person = null;
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openChatModal() {
+    console.log(this.person);
+    let dialogRef = this.dialog.open(ChatModalComponent, {
+      width: '600px',
+      height: '500px',
+      data: {person: this.person}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
 }

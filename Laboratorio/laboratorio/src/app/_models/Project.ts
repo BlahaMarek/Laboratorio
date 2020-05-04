@@ -11,6 +11,7 @@ export class Project {
         }],
         experiments: [{
             person: String;
+            desc: String;
         }]
     }>;
 }

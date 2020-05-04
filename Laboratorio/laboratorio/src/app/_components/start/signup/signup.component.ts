@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/_shared/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,13 +16,16 @@ export class SignupComponent implements OnInit {
     password: new FormControl('', Validators.required),
     confirm: new FormControl('', Validators.required),
   });
-  constructor(private userSvc: UserService) { }
+  constructor(private userSvc: UserService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   registerUser() {
     if (this.profileForm.get('password').value !== this.profileForm.get('confirm').value) {
+      this._snackBar.open("Zadané heslá sa nezhodujú", '', {
+        duration: 2000,
+      });
       return false;
     }
 
@@ -30,7 +35,7 @@ export class SignupComponent implements OnInit {
       password: this.profileForm.get('password').value
     }
 
-    this.userSvc.createUser(user).subscribe((userr) => console.log(userr), (err) => console.log(err));
+    this.userSvc.createUser(user).subscribe((userr) => {this.router.navigate(['/lab'])}, (err) => console.log(err));
   }
 
 }

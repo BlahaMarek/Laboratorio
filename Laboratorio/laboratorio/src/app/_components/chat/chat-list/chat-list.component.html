@@ -1,6 +1,7 @@
 <div class="box">
   <h1>Konverzácie</h1>
-  <app-chat-item></app-chat-item>
-  <app-chat-item></app-chat-item>
-  <app-chat-item></app-chat-item>
+
+  <div *ngFor="let collaborator of this.userSvc.$myColaborators | async">
+    <app-chat-item [person]="collaborator"></app-chat-item>
+  </div>
 </div>

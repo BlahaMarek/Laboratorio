@@ -13,14 +13,21 @@ export class UserService {
   user: User;
 
   private _mySlaves = new BehaviorSubject([])
+  private _myColaborators = new BehaviorSubject([])
 
   $mySlaves: Observable<any> = this._mySlaves.asObservable();
+  $myColaborators: Observable<any> = this._myColaborators.asObservable();
   
   constructor(private http: HttpClient) {}
   
   loadMySlaves() {
     const myId = this.user['user']._id;
     this.http.get<any>(this.baseUrl + `/slaves/${myId}`).subscribe(data => {this._mySlaves.next(data); console.log(data)});
+  }
+  
+  loadMyColaborators() {
+    const myId = this.user['user']._id;
+    this.http.get<any>(this.baseUrl + `/colaborators/${myId}`).subscribe(data => {this._myColaborators.next(data); console.log(data)});
   }
 
   createUser(user) {

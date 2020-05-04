@@ -56,4 +56,12 @@ export class ProjectDetailComponent implements OnInit {
   onBackClicked() {
     this.router.navigate([`/lab/project/${this.id}`]);
   }
+
+  addExperiment() {
+    this.projectSvc.postExperiment(this.id, {person: this.userSvc.user['user'].login, desc: "Total desc"}, this.projectDate)
+                   .subscribe( data => {
+                      this.editorData = "";
+                      this.project = data;
+                    });
+  }
 }

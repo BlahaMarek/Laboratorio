@@ -4,6 +4,12 @@
   height: 40px;
   display: flex;
   margin: 5px 0;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $white-hover;
+  }
+
   .avatar {
     flex-grow: 1;
 

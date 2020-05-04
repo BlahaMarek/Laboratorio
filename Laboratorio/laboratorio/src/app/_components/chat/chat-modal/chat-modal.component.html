@@ -1,0 +1,24 @@
+<div class="modalWrapper">
+    <h1 mat-dialog-title>Chat s používateľom <b>{{person.login}}</b></h1>
+    <div mat-dialog-content>
+        <span class="material-icons close" (click)="onNoClick()">close</span>
+        <div *ngIf="!!messages" class="messageWrap">
+
+            <div *ngFor="let message of messages">
+                <div class="chatWrap clearfix" [ngClass]="{'me': message.from == this.userSvc.user['user'].login}">
+                    <p class="from">{{message.from}}</p>
+                    <p class="date">{{getFormatedDate(message.timestamp)}}</p>
+                    
+                    <p class="content">
+                        {{message.message}}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="sendWrapper">
+            <input type="text" [(ngModel)]="messageText" >
+            <span (click)="send()" class="material-icons send">send</span>
+        </div>
+    </div>
+</div>
