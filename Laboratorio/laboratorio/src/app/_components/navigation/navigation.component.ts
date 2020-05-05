@@ -4,6 +4,7 @@ import { UserService } from 'src/app/_shared/services/user.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProfileComponent } from '../profile/profile.component';
 import { GroupChangerComponent } from '../group-changer/group-changer.component';
+import { CalibrationModalComponent } from '../project/calibration-modal/calibration-modal.component';
 
 @Component({
   selector: 'app-navigation',
@@ -21,6 +22,17 @@ export class NavigationComponent implements OnInit {
     let dialogRef = this.dialog.open(GroupChangerComponent, {
       width: '600px',
       data: {user: this.userSvc.user}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
+
+  openCalibrations() {
+    let dialogRef = this.dialog.open(CalibrationModalComponent, {
+      width: '800px',
+      height: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

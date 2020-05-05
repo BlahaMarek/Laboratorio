@@ -1,0 +1,34 @@
+<div class="dataWrap">
+    <h2>Dáta</h2>
+    <span (click)="addItem()" class="material-icons addData">add</span>
+
+    <form [formGroup]="dataForm">
+        <div formArrayName="data" >
+            <div  *ngFor="let item of getControls(); let i = index;">
+                <div class="inputRow" [formGroupName]="i">
+                    <input formControlName="x" placeholder="x" type="number">
+                    <input formControlName="y" placeholder="y" type="number">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="actions">
+        <input (click)="calcRegression()" type="submit" value="Skontrolovať">
+    </div> 
+
+    <div class="description" *ngIf="!!func && !!r2">
+        <span>{{func}}</span>
+        <span><b>r<sup>2</sup> : {{r2}}</b></span>
+
+        <div class="center" *ngIf="r2 < 0.95">
+            <p class="info"><span class="material-icons infoWarn"> warning</span> Nízka presnosť. Prosím zmeňte dáta</p>
+        </div>
+    </div>
+
+    <div class="actions" *ngIf="r2 >= 0.95">
+        <input class="special" [(ngModel)]="name" placeholder="Nazov kalibračnej rovnice" type="text">
+        <input (click)="saveCalibration()" type="submit" value="Uložiť">
+    </div> 
+
+</div>

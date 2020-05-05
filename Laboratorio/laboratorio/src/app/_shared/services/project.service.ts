@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProjectService {
 
   baseUrl: string = 'http://localhost:3000/projects/';
+  baseUrlCalibrations: string = 'http://localhost:3000/calibrations/';
 
   private _myProjects = new BehaviorSubject([])
   $myProjects: Observable<Project[]> = this._myProjects.asObservable();
@@ -51,6 +52,16 @@ export class ProjectService {
 
   postExperiment(_id, experiment, date) {
     return this.http.post<any>(this.baseUrl + _id + '/experiment', {experiment, date});
+  }
+
+
+  // CALIBRATIONS
+  calculateRegression(data) {
+    return this.http.post<any>(this.baseUrl + 'regression', data);
+  }
+  
+  postCalibration(data) {
+    return this.http.post<any>(this.baseUrlCalibrations, data);
   }
   
 }

@@ -33,6 +33,10 @@ import { NewProjectDateModalComponent } from './_components/project/new-project-
 import { ExperimentListComponent } from './_components/project/experiment-list/experiment-list.component';
 import { ExperimentItemComponent } from './_components/project/experiment-item/experiment-item.component';
 import { ChatModalComponent } from './_components/chat/chat-modal/chat-modal.component';
+import { CalibrationModalComponent } from './_components/project/calibration-modal/calibration-modal.component';
+import { CalibrationDataComponent } from './_components/project/calibration-data/calibration-data.component';
+import { CalibrationChartComponent } from './_components/project/calibration-chart/calibration-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,9 @@ import { ChatModalComponent } from './_components/chat/chat-modal/chat-modal.com
     ExperimentListComponent,
     ExperimentItemComponent,
     ChatModalComponent,
+    CalibrationModalComponent,
+    CalibrationDataComponent,
+    CalibrationChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +74,8 @@ import { ChatModalComponent } from './_components/chat/chat-modal/chat-modal.com
     AppMaterialModule,
     SharedModule,
     HttpClientModule,
-    CKEditorModule
+    CKEditorModule,
+    ChartsModule
   ],
   providers: [
     {

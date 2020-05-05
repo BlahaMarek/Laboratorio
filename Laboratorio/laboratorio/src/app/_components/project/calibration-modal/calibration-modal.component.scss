@@ -1,0 +1,10 @@
+.wrap {
+    display: flex;
+    flex-direction: row;
+    .data {
+        width: 300px;
+    }
+    .chart {
+        width: 500px;
+    }
+}
