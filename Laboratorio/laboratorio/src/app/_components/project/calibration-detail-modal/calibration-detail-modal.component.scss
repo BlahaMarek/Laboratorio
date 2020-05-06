@@ -1,0 +1,96 @@
+@import '../../../../assets/variables';
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    .data {
+        width: 300px;
+    }
+    .chart {
+        width: 500px;
+    }
+}
+
+.dataWrap {
+    position: relative;
+}
+
+
+.inputRow {
+    width: 90%;
+    margin: 3px auto;
+    &:last-child {
+        margin-bottom: 15px;
+    }
+    input {
+        outline: none;
+        border: none;
+        width: 48%;
+        box-sizing: border-box;
+        padding: 5px 0 5px 10px;
+        border-radius: 2px;
+        &:first-child {
+            margin-right: 4%;
+        }
+    }
+}
+
+.actions {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    input[type="submit"] {
+        background: $form-submit;
+        outline: none;
+        padding: 5px 10px;
+        border: none;
+        width: 100%;
+        border-radius: 2px;
+        color: $white;
+        &:hover{
+          cursor: pointer;
+        }
+    }
+}
+
+.description {
+    margin: 15px auto;
+    border: 1px solid #585858;
+    width: 90%;
+    height: 30px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 12px;
+    span {
+        padding: 0px 8px;
+    }
+}
+.center {
+    text-align: center;
+}
+
+.info {
+    font-size: 10px;
+    margin-top: 20px;
+}
+
+.infoWarn {
+    font-size: 15px;
+    position: relative;
+    top: 3px;
+    padding: 0 3px !important;
+}
+
+.special {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin: 20px 0 10px 0;
+}
+
+mat-form-field {
+    width: 90%;
+    margin-left: 5%;
+}

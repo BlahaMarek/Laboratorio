@@ -1,0 +1,42 @@
+<div class="wrap">
+    <div class="data" *ngIf="!!calibrations">
+        <h2>Dáta</h2>
+
+        <mat-form-field appearance="fill" class="input-full-width">
+            <mat-label>Kalibračná rovnica</mat-label>
+            <mat-select [(ngModel)]="currentCalibration">
+                <mat-option *ngFor="let c of calibrations" [value]="c" (click)="calibrationClicked(c)">
+                    {{c.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <form [formGroup]="dataForm">
+            <div formArrayName="data" >
+                <div  *ngFor="let item of getControls(); let i = index;">
+                    <div class="inputRow" [formGroupName]="i">
+                        <input formControlName="x" placeholder="x" type="number">
+                        <input formControlName="y" placeholder="y" type="number">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="description" *ngIf="!!func && !!r2">
+            <span>{{func}}</span>
+            <span><b>r<sup>2</sup> : {{r2}}</b></span>
+        </div>
+
+    </div>
+    <div class="chart">
+
+        <div class="divChart">
+            <canvas id="canvas"></canvas>
+        </div>
+
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button *ngIf="!!currentCalibration && userSvc.isSkolitel()" mat-button (click)="delete()">Vymazať</button>
+    <button mat-button cdkFocusInitial (click)="onNoClick()">Zrušiť</button>
+</div>

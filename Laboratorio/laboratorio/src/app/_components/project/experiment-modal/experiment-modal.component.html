@@ -5,6 +5,6 @@
         <app-experiment-data [experiment]="this.data.experiment" [dataForm]="dataForm" [edit]="data.edit"></app-experiment-data>
     </div>
     <div class="chart">
-        <app-experiment-chart [experiment]="this.data.experiment" [id]="this.data.id" [projectDate]="this.data.date" [dataForm]="dataForm" [project]="this.data.project" [edit]="data.edit"></app-experiment-chart>
+        <app-experiment-chart (onSaveClicked)="onNoClick()" [experiment]="this.data.experiment" [id]="this.data.id" [projectDate]="this.data.date" [dataForm]="dataForm" [project]="this.data.project" [edit]="data.edit"></app-experiment-chart>
     </div>
 </div>

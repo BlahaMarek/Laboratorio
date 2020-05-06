@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Chart } from 'chart.js';
 import { ProjectService } from 'src/app/_shared/services/project.service';
@@ -17,6 +17,7 @@ export class ExperimentChartComponent implements OnInit {
   @Input() project = null;
   @Input() experiment = null;
   @Input() edit: boolean = true;
+  @Output() onSaveClicked = new EventEmitter();
 
   data = [];
   originData = [];
@@ -119,6 +120,7 @@ export class ExperimentChartComponent implements OnInit {
     this.projectSvc.postExperiment(this.id, experiment, this.projectDate)
       .subscribe(data => {
         this.projectSvc.setCurrentProject(data);
+        this.onSaveClicked.emit('ok');
       });
   }
 }

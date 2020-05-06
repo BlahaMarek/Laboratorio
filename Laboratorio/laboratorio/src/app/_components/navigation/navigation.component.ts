@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { ProfileComponent } from '../profile/profile.component';
 import { GroupChangerComponent } from '../group-changer/group-changer.component';
 import { CalibrationModalComponent } from '../project/calibration-modal/calibration-modal.component';
+import { CalibrationDetailModalComponent } from '../project/calibration-detail-modal/calibration-detail-modal.component';
 
 @Component({
   selector: 'app-navigation',
@@ -31,6 +32,16 @@ export class NavigationComponent implements OnInit {
   openCalibrations() {
     let dialogRef = this.dialog.open(CalibrationModalComponent, {
       width: '800px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    })
+  }
+
+  openNotEditableCalibrations() {
+    let dialogRef = this.dialog.open(CalibrationDetailModalComponent, {
+      width: '800px',
+      data: {edit: false}
     });
 
     dialogRef.afterClosed().subscribe(result => {

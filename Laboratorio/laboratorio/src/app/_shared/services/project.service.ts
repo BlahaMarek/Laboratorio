@@ -68,5 +68,9 @@ export class ProjectService {
   getCalibrations() {
     return this.http.get<any>(this.baseUrlCalibrations);
   }
+
+  deleteCalibration(id) {
+    return this.http.delete<any>(this.baseUrlCalibrations + id);
+  }
   
 }

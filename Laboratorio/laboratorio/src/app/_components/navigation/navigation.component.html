@@ -4,7 +4,8 @@
     <div class="main" *ngIf="userSvc.getLoginStatus()">
       <ul>
         <li *ngIf="userSvc.isSkolitel()" (click)="openGroups()">Pracovné skupiny</li>
-        <li *ngIf="userSvc.isSkolitel()" (click)="openCalibrations()">Kalibračné rovnice</li>
+        <li (click)="openCalibrations()">Nová kalibrácia</li>
+        <li (click)="openNotEditableCalibrations()">Kalibračné rovnice</li>
       </ul>
     </div>
     <div class="side" *ngIf="userSvc.getLoginStatus()">
