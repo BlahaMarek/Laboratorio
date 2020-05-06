@@ -17,7 +17,7 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectSvc.loadMyProjects();
-    this.projectSvc.$myProjects.subscribe(data => {console.log(data); this.projects = data})
+    this.projectSvc.$myProjects.subscribe(data => { this.projects = data})
   }
 
   addProject() {

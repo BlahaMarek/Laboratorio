@@ -21,7 +21,6 @@ export class CalendarService {
 
   setCalendar(val: Calendar[]) {
     this._myCalendar.next(val);
-    console.log(this._myCalendar.getValue())
   }
 
   addToCalendar(val: Calendar) {

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ProjectService } from 'src/app/_shared/services/project.service';
 import { Calibration } from 'src/app/_models/Calibration';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-calibration-data',
@@ -10,6 +11,8 @@ import { Calibration } from 'src/app/_models/Calibration';
 })
 export class CalibrationDataComponent implements OnInit {
   @Input() dataForm: FormGroup;
+  @Output() onSent = new EventEmitter();
+
   data: FormArray;
   r2 = null;
   func = null;
@@ -24,8 +27,8 @@ export class CalibrationDataComponent implements OnInit {
 
   createItem() {
     return this.formBuilder.group({
-      x: null,
-      y: null
+      x: [null, Validators.required],
+      y: [null, Validators.required]
     });
   }
 
@@ -52,7 +55,7 @@ export class CalibrationDataComponent implements OnInit {
   }
 
   saveCalibration() {
-    if (!this.name) {
+    if (!this.name ) {
       return;
     }
     const calibration = new Calibration()
@@ -62,10 +65,17 @@ export class CalibrationDataComponent implements OnInit {
     calibration.name = this.name;
     calibration.data = this.dataForm.value.data;
 
-    console.log(calibration);
-
     this.projectSvc.postCalibration(calibration).subscribe(data => {
-      console.log(data);
+      this.onSent.emit('ok');
     })
+
+
+  }
+
+  get isDisabled() {
+    if ((<FormArray>this.dataForm.get('data')).controls.length < 3) {
+      return true
+    }
+    return !this.dataForm.valid;
   }
 }

@@ -1,0 +1,27 @@
+<h2>Graf</h2>
+
+<!-- <div class="chart-wrapper">
+    <canvas baseChart 
+        [datasets]="lineChartData" 
+        [options]="lineChartOptions"
+        [colors]="lineChartColors" 
+        [legend]="lineChartLegend" 
+        [chartType]="lineChartType" 
+        [plugins]="lineChartPlugins">
+    </canvas>
+</div> -->
+
+<div class="divChart">
+    <canvas (click)="removeElement($event)" id="canvas"></canvas>
+</div>
+
+<div class="description" *ngIf="!!func && !!r2">
+    <span>{{func}}</span>
+    <span><b>r<sup>2</sup> : {{r2}}</b></span>
+</div>
+<h3>Aktivita: <b>{{a}}</b></h3>
+
+<div class="inputWrap" *ngIf="edit">   
+    <input type="submit" [disabled]="this.myLineChart.data.datasets[0].data.length < 2" value="Vypočítaj aktivitu" (click)="calculateActivity()">
+    <input *ngIf="edit && !!func && !!r2" type="submit" value="Uložiť" (click)="save()">
+</div>

@@ -1,0 +1,44 @@
+<div class="dataWrap" *ngIf="!!calibrations">
+    <h2>Dáta</h2>
+    <span *ngIf="edit" (click)="addItem()" class="material-icons addData">add</span>
+    <mat-form-field *ngIf="edit">
+        <mat-label>Stručný popis</mat-label>
+            <input matInput [(ngModel)]="desc" (blur)="onNameBlur()">
+    </mat-form-field>
+    <mat-form-field *ngIf="edit">
+        <mat-label>Kalibračná rovnica</mat-label>
+        <mat-select [(ngModel)]="currentCalibration">
+            <mat-option *ngFor="let c of calibrations" [value]="c" (click)="calibrationClicked(c)">
+                {{c.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div *ngIf="!edit">
+        <p>Popis: <b>{{experiment.desc}}</b></p>
+        <p>Kalibracia: <b>{{experiment.calibration}}</b></p>
+    </div>
+    <div class="legend">
+        <span>Čas (min)</span>
+        <span>Absorbancia</span>
+        <span>Koncentrácia</span>
+    </div>
+    <form [formGroup]="dataForm">
+        <div formArrayName="data" >
+            <div  *ngFor="let item of getControls(); let i = index;">
+                <div class="inputRow" [formGroupName]="i">
+                    <input formControlName="x" placeholder="t" type="number">
+                    <input formControlName="z" placeholder="A" type="number">
+                    <input formControlName="y" placeholder="C" type="number" disabled>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="actions" *ngIf="edit">
+        <input  type="submit" value="Vypočítaj koncentráciu" (click)="calcConcentration()" [disabled]="isDisabled">
+    </div> 
+</div>
+
+<div class="wrapper" *ngIf="!calibrations">
+    <mat-spinner></mat-spinner>
+</div>

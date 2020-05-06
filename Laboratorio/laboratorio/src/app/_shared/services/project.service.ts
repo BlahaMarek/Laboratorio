@@ -26,12 +26,10 @@ export class ProjectService {
 
   setCurrentProject(val: Project) {
     this._currentProject.next(val);
-    console.log(this._currentProject.getValue())
   }
   
   setProject(val: Project[]) {
     this._myProjects.next(val);
-    console.log(this._myProjects.getValue())
   }
 
   getProjectById(_id): Observable<Project> {
@@ -56,12 +54,19 @@ export class ProjectService {
 
 
   // CALIBRATIONS
+  experimentCalibration = "";
+  experimentName = "";
+
   calculateRegression(data) {
     return this.http.post<any>(this.baseUrl + 'regression', data);
   }
   
   postCalibration(data) {
     return this.http.post<any>(this.baseUrlCalibrations, data);
+  }
+  
+  getCalibrations() {
+    return this.http.get<any>(this.baseUrlCalibrations);
   }
   
 }

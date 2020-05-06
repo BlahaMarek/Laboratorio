@@ -1,1 +1,9 @@
-<p>experiment-list works!</p>
+<div class="experiments">
+    <h1>Experimenty</h1>
+    <i (click)="addExperiment()" class="material-icons add">add_box</i>
+
+    <div *ngFor="let experiment of project.workDates[projectDate].experiments" class="experiment">
+        <app-experiment-item (click)="openExperiment(experiment)" [experiment]="experiment"></app-experiment-item>
+    </div>
+
+</div>

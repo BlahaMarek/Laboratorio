@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
     const currentUser = localStorage.getItem('currentUser');
 
     if (currentUser) {
-      console.log(JSON.parse(currentUser));
       this.userSvc.user = JSON.parse(currentUser);
-      this.router.navigate(['/lab']);
+      // this.router.navigate(['/lab']);
+      this.router.navigate(['/lab/project/5eaaea87414e5327ac56894b/2020-05-06']);
     }
   }
 

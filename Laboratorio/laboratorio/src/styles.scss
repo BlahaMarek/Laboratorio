@@ -44,6 +44,14 @@ html, body { height: 100%; }
   color: $nav-color;
 }
 
+input[type="submit"]:disabled {
+  background: #dddddd !important;
+  color: black !important;
+  &:hover {
+      cursor: not-allowed !important;
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

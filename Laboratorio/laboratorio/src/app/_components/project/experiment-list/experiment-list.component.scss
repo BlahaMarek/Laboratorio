@@ -1,0 +1,21 @@
+@import '../../../../assets/variables';
+
+.experiments {
+    margin-top: 20px;
+    position: relative;
+}
+
+.add {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.experiment {
+    height: 30px;
+    line-height: 30px;
+    &:hover {
+        cursor: pointer;
+        background-color: $white-hover;
+    }
+}

@@ -10,8 +10,13 @@ export class Project {
             comentBody: String;
         }],
         experiments: [{
-            person: String;
-            desc: String;
+            person: string;
+            desc: string;
+            calibration: string,
+            data: [{x: number, y: number, z: number}]
+            func: string,
+            r: number
+            activity: number
         }]
     }>;
 }

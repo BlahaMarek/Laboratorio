@@ -49,10 +49,7 @@ export class ProfileComponent implements OnInit {
       user['password'] = this.profileForm.get('password').value;
       user['email'] = this.profileForm.get('email').value;
       this.userSvc.updateProfile(user, this.data.user.user._id).subscribe( updatedUser => {
-        console.log(this.userSvc.user)
-        console.log(updatedUser);
         this.userSvc.user['user'] = updatedUser;
-        console.log(this.userSvc.user);
       })
     }
     this.dialogRef.close();

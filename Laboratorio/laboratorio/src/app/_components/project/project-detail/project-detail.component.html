@@ -25,17 +25,7 @@
             <input class="inputData" (click)="addDocumentToProject()" type="submit" value="Zapisať" />
         </div>
 
-        <div class="experiments">
-            <h1>Experimenty</h1>
-            <i (click)="addExperiment()" class="material-icons add">
-                add_box
-            </i>
-    
-            <div *ngFor="let experiment of project.workDates[projectDate].experiments">
-                <app-experiment-item [experiment]="experiment"></app-experiment-item>
-            </div>
-    
-        </div>
+        <app-experiment-list [project]="project" [id]="id" [projectDate]="projectDate"></app-experiment-list>
     </div>
     <div *ngIf="!project" class="spin">
         <mat-spinner></mat-spinner>

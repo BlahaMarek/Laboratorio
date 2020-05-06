@@ -14,9 +14,8 @@
     </form>
 
     <div class="actions">
-        <input (click)="calcRegression()" type="submit" value="Skontrolovať">
+        <input (click)="calcRegression()" type="submit" value="Skontrolovať" [disabled]="isDisabled">
     </div> 
-
     <div class="description" *ngIf="!!func && !!r2">
         <span>{{func}}</span>
         <span><b>r<sup>2</sup> : {{r2}}</b></span>
@@ -28,7 +27,7 @@
 
     <div class="actions" *ngIf="r2 >= 0.95">
         <input class="special" [(ngModel)]="name" placeholder="Nazov kalibračnej rovnice" type="text">
-        <input (click)="saveCalibration()" type="submit" value="Uložiť">
+        <input (click)="saveCalibration()" [disabled]="!this.dataForm.valid && !!name" type="submit" value="Uložiť">
     </div> 
 
 </div>

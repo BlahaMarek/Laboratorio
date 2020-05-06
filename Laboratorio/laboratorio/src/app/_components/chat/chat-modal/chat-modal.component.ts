@@ -28,7 +28,6 @@ export class ChatModalComponent implements OnInit, OnDestroy {
       this.messageSvc.getMessages(this.userSvc.user['user'].login, this.person.login).subscribe(data => {
         this.messages = data;
       })
-      console.log("sasda");
     }
 
     ngOnDestroy(): void {

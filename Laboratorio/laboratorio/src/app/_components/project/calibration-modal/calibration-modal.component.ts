@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-calibration-modal',
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CalibrationModalComponent implements OnInit {
   @Input()dataForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<CalibrationModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
 
   ngOnInit(): void {
@@ -20,9 +22,15 @@ export class CalibrationModalComponent implements OnInit {
   
   createItem() {
     return this.formBuilder.group({
-      x: null,
-      y: null
+      x: [null, Validators.required],
+      y: [null, Validators.required]
     });
   }
 
+  sendClicked(e) {
+    this.dialogRef.close();
+  }
+  onNoClick() {
+    this.dialogRef.close();
+  }
 }

@@ -15,7 +15,6 @@ export class ChatItemComponent implements OnInit {
   }
 
   openChatModal() {
-    console.log(this.person);
     let dialogRef = this.dialog.open(ChatModalComponent, {
       width: '600px',
       height: '500px',
@@ -23,7 +22,6 @@ export class ChatItemComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
     })
   }
 }

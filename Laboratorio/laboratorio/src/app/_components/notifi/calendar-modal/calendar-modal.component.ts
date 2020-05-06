@@ -22,8 +22,6 @@ export class CalendarModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
-
-    console.log("tototott: ", this.userSvc.user)
     this.calendarForm = new FormGroup({
       startDate: new FormControl({value: this.data.item.startDate, disabled: !this.data.edit} , [Validators.required]),
       micro: new FormControl({value: this.data.item.micro, disabled: !this.data.edit} , [Validators.required]),
@@ -43,7 +41,6 @@ export class CalendarModalComponent implements OnInit {
   }
 
   onDelete() {
-    console.log(this.data.item)
     this.calendarSvc.deleteItem(this.data.item._id);
     this.dialogRef.close();
   }

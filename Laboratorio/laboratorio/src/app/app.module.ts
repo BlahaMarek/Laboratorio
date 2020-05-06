@@ -37,6 +37,9 @@ import { CalibrationModalComponent } from './_components/project/calibration-mod
 import { CalibrationDataComponent } from './_components/project/calibration-data/calibration-data.component';
 import { CalibrationChartComponent } from './_components/project/calibration-chart/calibration-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { ExperimentDataComponent } from './_components/project/experiment-data/experiment-data.component';
+import { ExperimentModalComponent } from './_components/project/experiment-modal/experiment-modal.component';
+import { ExperimentChartComponent } from './_components/project/experiment-chart/experiment-chart.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,9 @@ import { ChartsModule } from 'ng2-charts';
     CalibrationModalComponent,
     CalibrationDataComponent,
     CalibrationChartComponent,
+    ExperimentDataComponent,
+    ExperimentModalComponent,
+    ExperimentChartComponent,
   ],
   imports: [
     BrowserModule,

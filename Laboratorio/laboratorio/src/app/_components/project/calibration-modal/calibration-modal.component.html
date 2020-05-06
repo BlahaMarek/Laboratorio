@@ -1,10 +1,11 @@
 <div class="wrap">
     <div class="data">
-        <app-calibration-data [dataForm]="dataForm"></app-calibration-data>
+        <app-calibration-data [dataForm]="dataForm" (onSent)="sendClicked($event)"></app-calibration-data>
     </div>
     <div class="chart">
         <app-calibration-chart [dataForm]="dataForm"></app-calibration-chart>
     </div>
-
-
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button cdkFocusInitial (click)="onNoClick()">Zrušiť</button>
 </div>

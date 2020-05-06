@@ -1,0 +1,30 @@
+@import '../../../../assets/variables';
+
+.wrap {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    .data {
+        width: 300px;
+    }
+    .chart {
+        width: 500px;
+    }
+}
+
+.remove-icon {
+    color: $danger;
+    margin-right: 5px;
+    transition: 0.1s all linear;
+    &:hover {
+        transform: rotateZ(90deg);
+        cursor: pointer;
+    }
+}
+
+#closeModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100000;
+}

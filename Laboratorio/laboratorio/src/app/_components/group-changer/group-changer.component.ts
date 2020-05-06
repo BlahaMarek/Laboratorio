@@ -46,7 +46,7 @@ export class GroupChangerComponent implements OnInit {
   }
 
   save() {
-    this.userSvc.addGroup(this.userSvc.user['user']._id, this.newGroup).subscribe(user => {this.userSvc.user['user'] = user; console.log(user)});
+    this.userSvc.addGroup(this.userSvc.user['user']._id, this.newGroup).subscribe(user => {this.userSvc.user['user'] = user; });
     this.userSvc.loadMyColaborators();
     this.dialogRef.close();
   }

@@ -25,18 +25,15 @@ export class NavigationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
     })
   }
 
   openCalibrations() {
     let dialogRef = this.dialog.open(CalibrationModalComponent, {
       width: '800px',
-      height: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
     })
   }
 
@@ -47,7 +44,6 @@ export class NavigationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
     })
   }
 

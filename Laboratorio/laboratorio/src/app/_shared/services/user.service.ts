@@ -22,18 +22,17 @@ export class UserService {
   
   loadMySlaves() {
     const myId = this.user['user']._id;
-    this.http.get<any>(this.baseUrl + `/slaves/${myId}`).subscribe(data => {this._mySlaves.next(data); console.log(data)});
+    this.http.get<any>(this.baseUrl + `/slaves/${myId}`).subscribe(data => {this._mySlaves.next(data);});
   }
   
   loadMyColaborators() {
     const myId = this.user['user']._id;
-    this.http.get<any>(this.baseUrl + `/colaborators/${myId}`).subscribe(data => {this._myColaborators.next(data); console.log(data)});
+    this.http.get<any>(this.baseUrl + `/colaborators/${myId}`).subscribe(data => {this._myColaborators.next(data);});
   }
 
   createUser(user) {
     return this.http.post<any>(this.baseUrl, user).pipe(
       map( usr => {
-        console.log(usr);
         localStorage.setItem('currentUser', JSON.stringify(usr));
         this.user = usr}
         )
