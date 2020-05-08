@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/_shared/services/user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/_models/User';
@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./chat-modal.component.scss']
 })
 export class ChatModalComponent implements OnInit, OnDestroy {
+  @ViewChild('scrollMe') scrollMe: ElementRef;
   messageText = "";
   person: User = null;
   messages = null;
@@ -27,7 +28,18 @@ export class ChatModalComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
       this.messageSvc.getMessages(this.userSvc.user['user'].login, this.person.login).subscribe(data => {
         this.messages = data;
+      this.scrollToBottom();
       })
+    }
+
+    ngAfterViewChecked() {        
+      this.scrollToBottom();        
+    }
+    
+    scrollToBottom(): void {
+      try {
+          this.scrollMe.nativeElement.scrollTop = this.scrollMe.nativeElement.scrollHeight;
+      } catch(err) { }                 
     }
 
     ngOnDestroy(): void {

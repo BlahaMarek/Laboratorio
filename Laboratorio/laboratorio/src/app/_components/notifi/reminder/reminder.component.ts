@@ -52,5 +52,26 @@ export class ReminderComponent implements OnInit {
     this.taskSvc.removeTask(task._id);
   }
 
+  doneItem(task) {
+    const doneItem = this.data.find(item => item._id == task._id)
+    doneItem.done = true;
+    this.data = this.data.filter(item => item._id != task._id);
+    this.data.push(doneItem);
+    switch (this.type) {
+      case 'my':
+        this.taskSvc.setMyTasks(this.data.concat());
+        break;
+      case 'lab':
+        this.taskSvc.setLabTasks(this.data);
+        break;
+      case 'reports':
+        this.taskSvc.setReports(this.data);
+        break;
+      default:
+        break;
+    }
+    this.taskSvc.doneTask(task._id);
+  }
+
 }
 

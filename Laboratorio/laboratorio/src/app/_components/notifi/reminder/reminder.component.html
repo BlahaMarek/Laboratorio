@@ -23,12 +23,15 @@
               warning
             </i>
           </span>
-          <span>
+          <span [ngClass]="{'line-cross': (this.type == 'my' || this.type == 'lab') && task.done}" >
             {{task.desc}}
           </span>
         </div>
-        <div class="delete" (click)="removeItem(task)" *ngIf="canEdit"> 
-          <i class="material-icons remove-icon">
+        <div class="delete"  *ngIf="canEdit"> 
+          <i *ngIf="(this.type == 'my' || this.type == 'lab') && !task.done" (click)="doneItem(task)" class="material-icons done-icon">
+            done
+          </i>
+          <i (click)="removeItem(task)" class="material-icons remove-icon">
             clear
           </i>
         </div>

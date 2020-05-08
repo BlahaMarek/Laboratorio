@@ -23,6 +23,20 @@
     }
 }
 
+.done-icon {
+    color: $danger;
+    top: 0px;
+    position: relative;
+    margin-right: 5px;
+    transition: 0.1s all linear;
+    &:hover {
+        transform: scale(1.1);
+        color: $success;
+        cursor: pointer;
+        top: -5px;
+    }
+}
+
 h1 {
     margin: 0;
     margin-bottom: 10px;
@@ -48,4 +62,8 @@ ul {
 .danger {
     color: $danger;
     top: 4px;
+}
+
+.line-cross {
+    text-decoration: line-through; 
 }

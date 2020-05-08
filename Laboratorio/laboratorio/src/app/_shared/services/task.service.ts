@@ -48,4 +48,8 @@ export class TaskService {
     this.http.delete<any>(this.baseUrl + taskId).subscribe();
   }
 
+  doneTask(taskId: String) {
+    this.http.put<any>(this.baseUrl +"done/"+ taskId, {}).subscribe();
+  }
+
 }
