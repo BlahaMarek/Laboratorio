@@ -4,7 +4,7 @@
     position: relative;
 }
 
-.addData {
+.addData, .addFile {
     position: absolute;
     top: 0;
     right: 30px;
@@ -12,6 +12,15 @@
     transition: 0.1s all linear;
     &:hover {
         transform: rotateZ(90deg);
+        cursor: pointer;
+    }
+}
+
+.addFile {
+    right: 60px;
+    font-size: 25px;
+    &:hover {
+        transform: scale(1.1);
         cursor: pointer;
     }
 }

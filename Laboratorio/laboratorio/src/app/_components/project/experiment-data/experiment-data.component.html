@@ -1,5 +1,10 @@
 <div class="dataWrap" *ngIf="!!calibrations">
     <h2>Dáta</h2>
+    <span *ngIf="edit" (click)="addFile()" class="material-icons addFile">attach_file</span>
+    <input type="file"
+            style="display:none"
+           id="fileUploader"
+           (change)="handleFileInput($event.target.files)">
     <span *ngIf="edit" (click)="addItem()" class="material-icons addData">add</span>
     <mat-form-field *ngIf="edit">
         <mat-label>Stručný popis</mat-label>
@@ -18,7 +23,7 @@
         <p>Kalibracia: <b>{{experiment.calibration}}</b></p>
     </div>
     <div class="legend">
-        <span>Čas (min)</span>
+        <span>Čas [min]</span>
         <span>Absorbancia</span>
         <span>Koncentrácia</span>
     </div>

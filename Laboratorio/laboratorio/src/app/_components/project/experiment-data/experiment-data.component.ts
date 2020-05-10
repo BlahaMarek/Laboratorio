@@ -17,7 +17,8 @@ export class ExperimentDataComponent implements OnInit {
   desc: string = "";
   calibrations: Calibration[];
   currentCalibration: Calibration = null;
- 
+  fileToUpload: File = null;
+
 
   constructor(private formBuilder: FormBuilder, private projectSvc: ProjectService) { }
 
@@ -26,20 +27,38 @@ export class ExperimentDataComponent implements OnInit {
       this.calibrations = data;
     })
   }
+  addFile() {
+    document.getElementById("fileUploader").click();
+  }
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files[0];
+    console.log(this.fileToUpload);
 
-  createItem() {
+    const fileData = new FormData();
+    fileData.append('file', this.fileToUpload);
+
+    this.projectSvc.postFile(fileData).subscribe( data => {
+      (this.dataForm.get('data') as FormArray).clear();
+      data.filtered.forEach(element => {
+        let num = element.absorbation.replace(',','.')
+        this.addItem(+element.time/60, +num);
+      });
+    })
+  }
+
+  createItem(x=null, z=null) {
     return this.formBuilder.group({
-      x: [null, Validators.required],
+      x: [x, Validators.required],
       y: [null],
-      z: [null, Validators.required]
+      z: [z, Validators.required]
     });
   }
 
-  addItem(): void {
+  addItem(x=null, z=null): void {
     this.data = this.dataForm.get('data') as FormArray;
-    this.data.push(this.createItem());
+    this.data.push(this.createItem(x,z));
   }
-
+  
   getControls() {
     return (this.dataForm.get('data') as FormArray).controls;
   }
@@ -53,16 +72,16 @@ export class ExperimentDataComponent implements OnInit {
   }
 
   calcConcentration() {
-    this.getControls().forEach( item => {
+    this.getControls().forEach(item => {
       item.get('y').patchValue(this.equation(item))
     })
   }
-  
-  equation(item) : number {
+
+  equation(item): number {
     let a = this.currentCalibration.a;
     let b = this.currentCalibration.b;
     let A = item.get('z').value;
-    let C = Math.round(((A - b) / a) * 10000 ) / 10000
+    let C = Math.round(((A - b) / a) * 10000) / 10000
     return C;
   }
 

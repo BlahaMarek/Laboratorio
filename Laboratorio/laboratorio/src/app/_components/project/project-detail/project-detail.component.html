@@ -26,6 +26,13 @@
         </div>
 
         <app-experiment-list [project]="project" [id]="id" [projectDate]="projectDate"></app-experiment-list>
+
+        <div>
+            <h1>Fotky</h1>
+            <div class="photoWrap" *ngFor="let photo of project.workDates[projectDate].photos; index as position">
+                <img src="{{photo.photo}}"/>
+            </div>
+        </div>
     </div>
     <div *ngIf="!project" class="spin">
         <mat-spinner></mat-spinner>

@@ -73,4 +73,8 @@ export class ProjectService {
     return this.http.delete<any>(this.baseUrlCalibrations + id);
   }
   
+  postFile(file: FormData) {
+    return this.http.post<any>(this.baseUrl + "file", file);
+  }
+  
 }
