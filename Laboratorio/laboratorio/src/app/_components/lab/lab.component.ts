@@ -4,6 +4,7 @@ import { TaskService } from 'src/app/_shared/services/task.service';
 import { Task } from 'src/app/_models/Task';
 import { User } from 'src/app/_models/User';
 import { MessagingService } from 'src/app/_shared/services/messaging.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lab',
@@ -12,7 +13,7 @@ import { MessagingService } from 'src/app/_shared/services/messaging.service';
 })
 export class LabComponent implements OnInit {
   public user: User;
-  constructor(public userSvc: UserService, public taskSvc: TaskService, private messageSvc: MessagingService) {
+  constructor(private _snackBar: MatSnackBar, public userSvc: UserService, public taskSvc: TaskService, private messageSvc: MessagingService) {
   }
 
   ngOnInit(): void {
@@ -26,7 +27,13 @@ export class LabComponent implements OnInit {
     this.messageSvc.socket.on('private_chat', (data) => {
       var username = data.username;
       var message = data.message;
+      this.messageNotificator('Nová správa od ' + username + '.', 'Zavrieť')
     });
   }
 
+  messageNotificator(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 20000,
+    });
+  }
 }

@@ -6,6 +6,7 @@ import { MessagingService } from 'src/app/_shared/services/messaging.service';
 import { Observable } from 'rxjs';
 import { Message } from 'src/app/_models/Message';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-chat-modal',
@@ -18,6 +19,7 @@ export class ChatModalComponent implements OnInit, OnDestroy {
   person: User = null;
   messages = [];
   constructor(
+    private _snackBar: MatSnackBar,
     public userSvc: UserService,
     public messageSvc: MessagingService,
     public dialogRef: MatDialogRef<ChatModalComponent>,
@@ -47,6 +49,7 @@ export class ChatModalComponent implements OnInit, OnDestroy {
       
       this.messageSvc.socket.on('group', (msg) => {
         console.log(msg);
+        this.messageNotificator('Nová správa v spoločnej skupine. ', 'Zavrieť')
         this.messages.push(msg);
       });
     }
@@ -61,6 +64,12 @@ export class ChatModalComponent implements OnInit, OnDestroy {
     try {
       this.scrollMe.nativeElement.scrollTop = this.scrollMe.nativeElement.scrollHeight;
     } catch (err) { }
+  }
+
+  messageNotificator(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 20000,
+    });
   }
 
   ngOnDestroy(): void {
