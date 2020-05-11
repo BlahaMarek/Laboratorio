@@ -4,6 +4,7 @@ import { ProjectService } from 'src/app/_shared/services/project.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NewProjectModalComponent } from '../new-project-modal/new-project-modal.component';
+import { UserService } from 'src/app/_shared/services/user.service';
 
 @Component({
   selector: 'app-project-list',
@@ -13,7 +14,7 @@ import { NewProjectModalComponent } from '../new-project-modal/new-project-modal
 export class ProjectListComponent implements OnInit {
   projects: Project[] = [];
  
-  constructor(private projectSvc: ProjectService, private router: Router, public dialog: MatDialog) { }
+  constructor(private projectSvc: ProjectService, private router: Router, public dialog: MatDialog, public userSvc: UserService) { }
 
   ngOnInit(): void {
     this.projectSvc.loadMyProjects();

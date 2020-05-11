@@ -30,12 +30,14 @@ export class ExperimentListComponent implements OnInit {
   addExperiment() {
     const dialogRef = this.dialog.open(ExperimentModalComponent, {
       width: '800px',
+      height: '800px',
       data: {edit: true, id: this.id, date: this.projectDate, project: this.project}
     })
   }
   openExperiment(experiment) {
     const dialogRef = this.dialog.open(ExperimentModalComponent, {
       width: '800px',
+      height: '800px',
       data: {edit: false, id: this.id, date: this.projectDate, experiment: experiment}
     })
   }

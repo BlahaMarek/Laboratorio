@@ -1,5 +1,5 @@
 <div class="modalWrapper">
-    <h1 mat-dialog-title>Chat s používateľom <b>{{person.login}}</b></h1>
+    <h1 mat-dialog-title>Chat s používateľom <b>{{getName}}</b></h1>
     <div mat-dialog-content>
         <span class="material-icons close" (click)="onNoClick()">close</span>
         <div #scrollMe *ngIf="!!messages" class="messageWrap">
@@ -18,7 +18,7 @@
         </div>
         <div class="sendWrapper">
             <input type="text" [(ngModel)]="messageText" >
-            <span (click)="send()" class="material-icons send">send</span>
+            <span (keyup.enter)="send()" (click)="send()" class="material-icons send">send</span>
         </div>
     </div>
 </div>

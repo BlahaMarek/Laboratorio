@@ -1,6 +1,6 @@
 <div class="box">
   <h1>Projekty</h1>
-  <i (click)="addProject()" class="material-icons add">
+  <i *ngIf="userSvc.isSkolitel()" (click)="addProject()" class="material-icons add">
     add_box
   </i>
   <div class="project-item" *ngFor="let project of projects">

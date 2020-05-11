@@ -38,10 +38,12 @@ export class ExperimentDataComponent implements OnInit {
     fileData.append('file', this.fileToUpload);
 
     this.projectSvc.postFile(fileData).subscribe( data => {
+      console.log(data);
       (this.dataForm.get('data') as FormArray).clear();
       data.filtered.forEach(element => {
         let num = element.absorbation.replace(',','.')
-        this.addItem(+element.time/60, +num);
+        let time = element.time.replace(',','.')
+        this.addItem(+time/60, +num);
       });
     })
   }

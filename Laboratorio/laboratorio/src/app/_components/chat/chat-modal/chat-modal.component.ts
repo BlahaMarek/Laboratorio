@@ -16,58 +16,93 @@ export class ChatModalComponent implements OnInit, OnDestroy {
   @ViewChild('scrollMe') scrollMe: ElementRef;
   messageText = "";
   person: User = null;
-  messages = null;
+  messages = [];
   constructor(
     public userSvc: UserService,
     public messageSvc: MessagingService,
     public dialogRef: MatDialogRef<ChatModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.person = data.person;
-    }
+    this.person = data.person;
+  }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+    if (!!this.person) {
+
       this.messageSvc.getMessages(this.userSvc.user['user'].login, this.person.login).subscribe(data => {
         this.messages = data;
-      this.scrollToBottom();
       })
-    }
 
-    ngAfterViewChecked() {        
-      this.scrollToBottom();        
-    }
-    
-    scrollToBottom(): void {
-      try {
-          this.scrollMe.nativeElement.scrollTop = this.scrollMe.nativeElement.scrollHeight;
-      } catch(err) { }                 
-    }
+      this.messageSvc.socket.on('private_chat', (data) => {
+        var username = data.username;
+        var message = data.message;
+        if (this.person.login == username) {
+          this.messages.push(message);
+        }
+      });
 
-    ngOnDestroy(): void {
-    }
-   
-    onNoClick() {
-      this.dialogRef.close();
-    }
-  
-    send() {
-      if (this.messageText.length == 0) {
-        return;
-      }
-
-      const newMessage = new Message();
-      newMessage.from = this.userSvc.user['user'].login;
-      newMessage.to = this.person.login;
-      newMessage.message = this.messageText;
-
-      this.messageText = "";
-
-      this.messageSvc.postMessage(newMessage).subscribe(data => {
-        this.messages.push(data);
+    } else {
+      this.messageSvc.getGroupMessages().subscribe(data => {
+        this.messages = data;
+      })
+      
+      this.messageSvc.socket.on('group', (msg) => {
+        console.log(msg);
+        this.messages.push(msg);
       });
     }
-  
-    getFormatedDate(date) {
-      const newDate = new Date(date).toLocaleString('en-GB');
-      return newDate;
+    this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.scrollMe.nativeElement.scrollTop = this.scrollMe.nativeElement.scrollHeight;
+    } catch (err) { }
+  }
+
+  ngOnDestroy(): void {
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
+  }
+
+  send() {
+    if (this.messageText.length == 0) {
+      return;
     }
+    const newMessage = new Message();
+    newMessage.message = this.messageText;
+    newMessage.from = this.userSvc.user['user'].login;
+
+    if (!!this.person) {
+      newMessage.to = this.person.login;
+      this.messageSvc.postMessage(newMessage).subscribe(data => {
+        this.messageSvc.socket.emit('private_chat', {
+          to: this.person.login,
+          message: newMessage
+        });
+      });
+    } else {
+      newMessage.to = 'group';
+      this.messageSvc.postMessage(newMessage).subscribe(data => {
+        this.messageSvc.socket.emit('group', newMessage);
+      });
+    }
+
+    this.messages.push(newMessage);
+    this.messageText = "";
+  }
+
+  getFormatedDate(date) {
+    const newDate = new Date(date).toLocaleString('en-GB');
+    return newDate;
+  }
+
+  get getName() {
+    return !!this.person ? this.person.login : 'Skupina'
+  }
 }

@@ -24,4 +24,8 @@ export class ChatItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     })
   }
+
+  get getName() {
+    return !!this.person ? this.person.login : 'Skupina'
+  }
 }
